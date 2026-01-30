@@ -17,7 +17,9 @@ body {
 
 img {
     max-width: 100%;
-    height: auto ;
+    height: auto;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -280,12 +282,9 @@ img {
 }
 
 .event-price {
-    display: inline-block;
-    background: #6366f1;
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
     font-weight: 600;
+    color: #333;
+    margin: 0.5rem 0;
 }
 
 
@@ -350,5 +349,53 @@ img {
     padding: 60px 0;
     text-align: center;
 }
-
+.newsletter-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
+
+.newsletter-content p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.form-message {
+    margin-top: 1rem;
+    padding: 10px;
+    border-radius: 6px;
+    display: none;
+}
+
+.form-message.success {
+    background: #10b981;
+    color: white;
+}
+
+.form-message.error {
+    background: #ef4444;
+    color: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
