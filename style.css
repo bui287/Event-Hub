@@ -96,19 +96,17 @@ img {
     transition: 0.3s;
 }
 
-/* Hero Section */
+
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://media.vsstatic.com/image/upload/if_fc_gte_1/g_auto,q_auto,c_fill,w_680,h_680/if_else/g_center,q_auto,c_fill,w_680,h_680/if_end/dpr_auto,f_auto/hero/category/60-dance-electronica/dance-electronica-tickets-1.jpg') center/cover;
     color: white;
     padding: 80px 0;
     min-height: 500px;
 }
 
 .hero .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    text-align: center;
+    max-width: 800px;
 }
 
 .hero-content h2 {
@@ -138,7 +136,7 @@ img {
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
-/* Buttons */
+
 .btn {
     display: inline-block;
     padding: 12px 24px;
@@ -490,7 +488,7 @@ img {
     color: #666;
 }
 
-/* Modal */
+
 .event-modal {
     position: fixed;
     top: 0;
@@ -535,7 +533,7 @@ img {
     color: #666;
 }
 
-/* Booking Page */
+
 .booking-section {
     padding: 40px 0;
 }
@@ -639,7 +637,6 @@ img {
     margin-top: 1rem;
 }
 
-/* Footer */
 .footer {
     background: #1f2937;
     color: white;
@@ -686,7 +683,7 @@ img {
     color: #9ca3af;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .nav-menu {
         display: none;
@@ -822,7 +819,6 @@ img {
     }
 }
 
-/* Utility Classes */
 .text-center {
     text-align: center;
 }
@@ -835,7 +831,7 @@ img {
     margin-top: 2rem;
 }
 
-/* Accessibility */
+
 .visually-hidden {
     position: absolute;
     width: 1px;

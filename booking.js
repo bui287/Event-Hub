@@ -27,7 +27,6 @@ function setupFormValidation() {
         }
     });
     
-    // Real-time validation
     const inputs = bookingForm.querySelectorAll('input, select, textarea');
     inputs.forEach(input => {
         input.addEventListener('blur', function() {
@@ -63,20 +62,19 @@ function validateField(field) {
     let isValid = true;
     let errorMessage = '';
     
-    // Remove previous error styling
+
     field.classList.remove('error');
     const existingError = field.parentNode.querySelector('.error-message');
     if (existingError) {
         existingError.remove();
     }
     
-    // Required field validation
+
     if (field.hasAttribute('required') && !value) {
         errorMessage = 'This field is required';
         isValid = false;
     }
     
-    // Email validation
     if (field.type === 'email' && value) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
@@ -84,8 +82,7 @@ function validateField(field) {
             isValid = false;
         }
     }
-    
-    // Phone validation
+
     if (field.type === 'tel' && value) {
         const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
         if (!phoneRegex.test(value)) {
@@ -94,7 +91,7 @@ function validateField(field) {
         }
     }
     
-    // Number validation
+
     if (field.type === 'number') {
         const min = parseInt(field.getAttribute('min'));
         const max = parseInt(field.getAttribute('max'));
@@ -106,7 +103,6 @@ function validateField(field) {
         }
     }
     
-    // Show error if invalid
     if (!isValid) {
         field.classList.add('error');
         const errorElement = document.createElement('span');
@@ -131,7 +127,6 @@ function setupPriceCalculation() {
     if (ticketQuantity) ticketQuantity.addEventListener('input', updateBookingSummary);
     if (ticketType) ticketType.addEventListener('change', updateBookingSummary);
     
-    // Initial calculation
     updateBookingSummary();
 }
 
@@ -147,7 +142,6 @@ function updateBookingSummary() {
     
     if (!eventSelect || !ticketQuantity || !ticketType) return;
     
-    // Get base price from selected event
     let basePrice = 0;
     let eventName = 'Not selected';
     
@@ -161,7 +155,6 @@ function updateBookingSummary() {
         eventName = text.replace(/ - \$\d+/, '');
     }
     
-    // Calculate ticket type modifier
     let typeModifier = 0;
     let typeName = 'General Admission';
     
@@ -176,12 +169,11 @@ function updateBookingSummary() {
             break;
     }
     
-    // Calculate total
-    const quantity = parseInt(ticketQuantity.value) || 1;
+   const quantity = parseInt(ticketQuantity.value) || 1;
     const ticketPrice = basePrice + typeModifier;
     const total = Math.max(0, ticketPrice * quantity);
     
-    // Update summary
+  
     if (summaryEvent) summaryEvent.textContent = eventName;
     if (summaryTickets) summaryTickets.textContent = quantity;
     if (summaryType) summaryType.textContent = typeName;
@@ -217,12 +209,12 @@ function clearValidationErrors() {
 
 function processBooking() {
     const bookingForm = document.getElementById('bookingForm');
-    if (!bookingForm) return;
-    
-    // Calculate total
+    if (!bookingForm) return; 
     const eventSelect = document.getElementById('eventSelect');
     const ticketQuantity = document.getElementById('ticketQuantity');
     const ticketType = document.getElementById('ticketType');
+    const specialRequestsField = document.getElementById('specialRequests');
+    const newsletterField = document.getElementById('newsletter');
     
     let totalPrice = 0;
     if (eventSelect.value && ticketQuantity.value) {
@@ -230,8 +222,7 @@ function processBooking() {
         const priceText = selectedOption.text;
         const price = parseFloat(priceText.match(/\$(\d+)/)[1]);
         const quantity = parseInt(ticketQuantity.value);
-        
-        // Apply ticket type multiplier
+
         let multiplier = 1;
         if (ticketType.value === 'vip') {
             multiplier = 2;
@@ -242,7 +233,7 @@ function processBooking() {
         totalPrice = price * quantity * multiplier;
     }
     
-    // Collect form data
+ 
     const formData = {
         event: document.getElementById('eventSelect').value,
         eventName: document.getElementById('eventSelect').options[document.getElementById('eventSelect').selectedIndex].text,
@@ -252,29 +243,29 @@ function processBooking() {
         lastName: document.getElementById('lastName').value,
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
-        specialRequests: document.getElementById('specialRequests').value,
-        newsletter: document.getElementById('newsletter').checked,
+    
+        specialRequests: specialRequestsField ? specialRequestsField.value : '',
+        newsletter: newsletterField ? newsletterField.checked : false,
         total: totalPrice.toFixed(2),
         bookingDate: new Date().toISOString(),
         bookingId: generateBookingId()
     };
     
-    // Save to localStorage
+   
     const bookings = JSON.parse(localStorage.getItem('eventBookings') || '[]');
     bookings.push(formData);
     localStorage.setItem('eventBookings', JSON.stringify(bookings));
     
-    // Show success message
+
     showBookingSuccess(formData);
     
-    // Update booked events list
+
     loadBookedEvents();
     
-    // Reset form
     bookingForm.reset();
     clearValidationErrors();
     
-    // Scroll to top to see the success message and booked events
+   
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -303,7 +294,7 @@ function showBookingSuccess(bookingData) {
     
     messageDiv.style.display = 'block';
     
-    // Auto hide after 10 seconds
+ 
     setTimeout(() => {
         hideMessage();
     }, 10000);
@@ -318,7 +309,7 @@ function hideMessage() {
 }
 
 function loadSelectedEvent() {
-    // Check if an event was selected from the events page
+    
     const selectedEvent = localStorage.getItem('selectedEvent');
     if (selectedEvent) {
         try {
@@ -326,7 +317,7 @@ function loadSelectedEvent() {
             const eventSelect = document.getElementById('eventSelect');
             
             if (eventSelect && eventSelect) {
-                // Find and select the matching event
+                
                 for (let i = 0; i < eventSelect.options.length; i++) {
                     const option = eventSelect.options[i];
                     if (option.value === event.id.toString() || 
@@ -336,8 +327,6 @@ function loadSelectedEvent() {
                     }
                 }
             }
-            
-            // Clear the selected event from localStorage
             localStorage.removeItem('selectedEvent');
         } catch (e) {
             console.error('Error loading selected event:', e);
@@ -375,8 +364,6 @@ function loadBookedEvents() {
         bookedEventsList.innerHTML = '<p class="no-bookings">No bookings yet. Complete a booking to see it here!</p>';
         return;
     }
-    
-    // Show only the last 3 bookings
     const recentBookings = bookings.slice(-3).reverse();
     
     const html = recentBookings.map((booking, index) => {
@@ -406,8 +393,6 @@ function cancelBooking(index) {
         const bookings = JSON.parse(localStorage.getItem('eventBookings') || '[]');
         bookings.splice(index, 1); // Remove the booking at the specified index
         localStorage.setItem('eventBookings', JSON.stringify(bookings));
-        
-        // Show cancellation message
         const messageDiv = document.getElementById('bookingMessage');
         if (messageDiv) {
             messageDiv.innerHTML = `
@@ -418,18 +403,15 @@ function cancelBooking(index) {
             `;
             messageDiv.style.display = 'block';
             
-            // Hide message after 3 seconds
             setTimeout(() => {
                 messageDiv.style.display = 'none';
             }, 3000);
         }
         
-        // Reload the booked events list
         loadBookedEvents();
     }
 }
 
-// Add error field styling
 const style = document.createElement('style');
 style.textContent = `
     .error {

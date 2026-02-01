@@ -75,13 +75,13 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
             }
-        }
+            }
         
         lastScroll = currentScroll;
-    });
+       });
 
     initAnimations();
-});
+   });
 
 function showMessage(element, message, type) {
     if (!element) return;

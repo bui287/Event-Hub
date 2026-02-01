@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
+<header class="header">
+<nav class="nav">
+ <div class="nav-container">
                 <a href="index.html" class="logo">
                     <h1>EventHub</h1>
                 </a>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="events.html" class="nav-link">upcoming Events</a></li>
                     <li><a href="booking.html" class="nav-link active">Book Now</a></li>
                 </ul>
                 <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
@@ -36,80 +36,78 @@
             </div>
         </section>
 
-        <section class="booking-section">
-            <div class="container">
-                <div class="booking-layout">
-                    <div class="booking-form-container">
-                        <form id="bookingForm" class="booking-form">
-                            <fieldset class="form-section">
-                                <h2>Select Event</h2>
-                                <div class="form-group">
-                                    <label for="eventSelect">Choose an event *</label>
-                                    <select id="eventSelect" required>
-                                        <option value="">-- Select an Event --</option>
-                                        <option value="summer-festival">Summer Music Festival - $45</option>
-                                        <option value="tech-workshop">Web Development Workshop - $75</option>
-                                        <option value="art-exhibition">Modern Art Exhibition - $20</option>
-                                        <option value="comedy-night">Comedy Night - $35</option>
-                                        <option value="food-festival">Food & Wine Festival - $60</option>
-                                    </select>
-                                </div>
-                            </fieldset>
+         <section class="booking-section">
+         <div class="container">
+         <div class="booking-layout">
+        <div class="booking-form-container">
+        <form id="bookingForm" class="booking-form">
+          <fieldset class="form-section">
+          <h2>Select Event</h2>
+          <div class="form-group">
+          <label for="eventSelect">Choose an event *</label>
+         <select id="eventSelect" required>
+            <option value="">-- Select an Event --</option>
+            <option value="summer-festival">Summer Music Festival - $45</option>
+            <option value="tech-workshop">Web Development Workshop - $75</option>
+            <option value="art-exhibition">Modern Art Exhibition - $20</option>
+            <option value="comedy-night">Comedy Night - $35</option>
+            <option value="food-festival">Food & Wine Festival - $60</option>
+         </select>
+        </div>
+         </fieldset>
 
-                            <fieldset class="form-section">
-                                <h2>Ticket Information</h2>
-                                <div class="form-group">
-                                    <label for="ticketQuantity">Number of tickets *</label>
-                                    <input type="number" id="ticketQuantity" min="1" max="10" value="1" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="ticketType">Ticket type *</label>
-                                    <select id="ticketType" required>
-                                        <option value="general">General Admission</option>
-                                        <option value="vip">VIP (+$20)</option>
-                                        <option value="student">Student (-$10)</option>
-                                    </select>
-                                </div>
-                            </fieldset>
+    <fieldset class="form-section">
+        <h2>Ticket Information</h2>
+        <div class="form-group">
+      <label for="ticketQuantity">Number of tickets *</label>   
+        <input type="number" id="ticketQuantity" min="1" max="10" value="1" required>
+     </div>
+         <div class="form-group">
+     <label for="ticketType">Ticket type *</label>
+   <select id="ticketType" required>
+          <option value="general">General Admission</option>
+         <option value="vip">VIP (*2)</option>
+       <option value="student">Student (*0.5)</option>
+   </select>
+ </div>
+ </fieldset>
 
-                            <fieldset class="form-section">
-                                <h2>Personal Information</h2>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="firstName">First name *</label>
-                                        <input type="text" id="firstName" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="lastName">Last name *</label>
-                                        <input type="text" id="lastName" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email address *</label>
-                                    <input type="email" id="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone number *</label>
-                                    <input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
-                                </div>
-                            </fieldset>
+  <fieldset class="form-section">
+ <h2>Personal Information</h2>
+          <div class="form-row">
+          <div class="form-group">
+          <label for="firstName">First name *</label>
+          <input type="text" id="firstName" required>
+    </div>
+<div class="form-group">
+<label for="lastName">Last name *</label>
+ <input type="text" id="lastName" required>
+    </div>
+   </div>
+ <div class="form-group">
+<label for="email">Email address *</label>
+ <input type="email" id="email" required>
+  </div>
+<div class="form-group">
+ <label for="phone">Phone number *</label>
+<input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
+     </div>
+    </fieldset>
 
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-primary btn-large">Complete Booking</button>
-                                <button type="button" class="btn btn-outline" id="resetForm">Clear Form</button>
-                            </div>
+<div class="form-actions">
+ <button type="submit" class="btn btn-primary btn-large">Complete Booking</button>
+<button type="button" class="btn btn-outline" id="resetForm">Clear Form</button>
+    </div>
+     <div id="bookingMessage" class="form-message" role="alert"></div>
+         </form>
+         </div>
 
-                            <div id="bookingMessage" class="form-message" role="alert"></div>
-                        </form>
-                    </div>
-
-                    <div class="booked-events">
-                        <div class="info-card">
-                            <h3>Your Booked Events</h3>
-                            <div id="bookedEventsList">
-                                <p class="no-bookings">No bookings yet. Complete a booking to see it here!</p>
-                            </div>
-                        </div>
+         <div class="booked-events">
+          <div class="info-card">
+             <h3>Your Booked Events</h3>
+             <div id="bookedEventsList">
+              <p class="no-bookings">No bookings yet. Complete a booking to see it here!</p>
+         </div>
                         <div class="info-card">
                             <h3>Payment Information</h3>
                             <p>To complete your booking, please take the booking ID provided and pay through Telebirr using the following steps:</p>
@@ -122,11 +120,11 @@
                             </ol>
                             <p><strong>Note:</strong> Your booking will be confirmed once payment is received.</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+                        </div>
+                        </div>
+                        </div>
+                      </section>
+               </main>
 
     <footer class="footer">
         <div class="container">
@@ -142,7 +140,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 EventHub. All rights reserved.</p>
+                <p>&copy; 2026 EventHub. All rights reserved.</p>
             </div>
         </div>
     </footer>
